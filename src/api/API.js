@@ -6,6 +6,9 @@ const API = {
     },
     parkedVehicle: {
         getAll: () => axios.get("api/parked-vehicle")
+    },
+    parkingAreas: {
+        getAll: () => axios.get("api/parking-area")
     }
 
 

@@ -11,8 +11,11 @@ import Grid from "@mui/material/Grid";
 
 const useStyles = makeStyles(theme => ({
     containerEvents: {
-        height: '100vh',
+        height: '90vh',
         overflow: 'scroll'
+    },
+    table: {
+        height: "100%"
     },
     paper: {
         height: '5.5vh',
@@ -25,7 +28,7 @@ const EventComponent = ({events}) => {
 
     return (
         <div className={classes.containerEvents}>
-            <TableContainer component={Paper}>
+            <TableContainer className={classes.table} component={Paper}>
                 <Table sx={{minWidth: 650}} size="small" aria-label="a dense table">
                     <TableHead>
                         <TableRow>

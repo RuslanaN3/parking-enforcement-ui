@@ -7,8 +7,9 @@ import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import Box from "@mui/material/Box";
 import CustomHistory from "../CustomHistory";
-import EventsPage from "./EventsPage";
+import EventsPage from "../components/EventsComponent";
 import Typography from "@mui/material/Typography";
+import ParkingAreaPage from "../components/ParkingAreaPage";
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -77,44 +78,38 @@ function TabPanel(props) {
 }
 
 export default function DashboardPage() {
+    const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
 
-    function a11yProps(index) {
-        return {
-            id: `simple-tab-${index}`,
-            'aria-controls': `simple-tabpanel-${index}`,
-        };
-    }
-
     return (
-
-        <Box sx={{width: '100%'}}>
-            <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
-                <Tabs value={value} onChange={handleChange}
-                      textColor="secondary"
-                      indicatorColor="secondary"
-                      aria-label="secondary tabs example"
-                >
-                    <Tab label="Events"/>
-                    <Tab label="Parked Vehicles"/>
-                    <Tab label="Parking Zone"/>
-                </Tabs>
+        <div className={classes.container}>
+            <Box sx={{width: '100%'}}>
+                <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
+                    <Tabs value={value} onChange={handleChange}
+                          textColor="secondary"
+                          indicatorColor="secondary"
+                          aria-label="secondary tabs example"
+                    >
+                        <Tab label="Events"/>
+                        <Tab label="Parked Vehicles"/>
+                        <Tab label="Parking Area"/>
+                    </Tabs>
+                </Box>
+                <TabPanel value={value} index={0}>
+                    <EventsPage/>
+                </TabPanel>
+                <TabPanel value={value} index={1}>
+                    Item Two
+                </TabPanel>
+                <TabPanel value={value} index={2}>
+                    <ParkingAreaPage/>
+                </TabPanel>
             </Box>
-            <TabPanel value={value} index={0}>
-                <EventsPage/>
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-                Item Two
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-                Item Three
-            </TabPanel>
-        </Box>
-
+        </div>
 
     );
 }
