@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios/index";
 import {makeStyles} from "@mui/styles/index";
-import EventComponent from "./EventComponent";
+import EventComponent from "./EventTable";
 import Grid from "@mui/material/Grid/index";
 import Tab from "@mui/material/Tab/index";
 import Tabs from "@mui/material/Tabs/index";

@@ -1,14 +1,9 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios/index";
 import {makeStyles} from "@mui/styles/index";
-import EventComponent from "./EventComponent";
-import Grid from "@mui/material/Grid/index";
-import Tab from "@mui/material/Tab/index";
-import Tabs from "@mui/material/Tabs/index";
-import Box from "@mui/material/Box/index";
-import {History as CustomHistory} from "history/index";
 import API, {eventsConst} from "../api/API";
 import Container from "@mui/material/Container";
+import EventTable from "./EventTable";
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -42,11 +37,7 @@ const EventsComponent = () => {
     }, []);
 
     return (
-
-
-        <EventComponent events={eventsConst}/>
-
-
+        <EventTable events={eventsConst}/>
     )
 };
 export default EventsComponent;

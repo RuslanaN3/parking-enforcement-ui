@@ -10,8 +10,8 @@ import TableCell from "@mui/material/TableCell";
 
 const useStyles = makeStyles(theme => ({
     containerEvents: {
-        overflowY: 'scroll',
-        maxHeight: '650px'
+
+
     },
     table: {
         height: "100%"
@@ -21,14 +21,13 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const EventComponent = ({events}) => {
+const EventTable = ({events}) => {
     const classes = useStyles();
 
-
     return (
-        <div className={classes.containerEvents}>
-            <TableContainer component={Paper}>
-                <Table sx={{minWidth: 650}} size="small" aria-label="a dense table">
+
+            <TableContainer sx={{backgroundColor: '#f3f3f3', maxHeight: '90vh'}} component={Paper}>
+                <Table sx={{minWidth: 650, maxWidth: '100%', overflowY: 'scroll', }} size="small" aria-label="a dense table">
                     <TableHead>
                         <TableRow>
                             <TableCell align="right">Timestamp</TableCell>
@@ -54,7 +53,7 @@ const EventComponent = ({events}) => {
                     </TableBody>
                 </Table>
             </TableContainer>
-        </div>
+
     );
 };
-export default EventComponent;
+export default EventTable;
