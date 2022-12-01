@@ -7,12 +7,11 @@ import TableRow from "@mui/material/TableRow";
 import TableHead from "@mui/material/TableHead";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
-import Grid from "@mui/material/Grid";
 
 const useStyles = makeStyles(theme => ({
     containerEvents: {
-        height: '90vh',
-        overflow: 'scroll'
+        overflowY: 'scroll',
+        maxHeight: '650px'
     },
     table: {
         height: "100%"
@@ -28,15 +27,15 @@ const EventComponent = ({events}) => {
 
     return (
         <div className={classes.containerEvents}>
-            <TableContainer className={classes.table} component={Paper}>
+            <TableContainer component={Paper}>
                 <Table sx={{minWidth: 650}} size="small" aria-label="a dense table">
                     <TableHead>
                         <TableRow>
-                            <TableCell align="right">timestamp</TableCell>
-                            <TableCell align="right">licensePlate</TableCell>
-                            <TableCell align="right">licencePlateConfidence</TableCell>
-                            <TableCell align="right">cameraId</TableCell>
-                            <TableCell align="right">cycle</TableCell>
+                            <TableCell align="right">Timestamp</TableCell>
+                            <TableCell align="right">License plate</TableCell>
+                            <TableCell align="right">Confidence</TableCell>
+                            <TableCell align="right">Camera Id</TableCell>
+                            <TableCell align="right">Cycle</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

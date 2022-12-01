@@ -13,8 +13,8 @@ import Container from "@mui/material/Container";
 const useStyles = makeStyles(theme => ({
     container: {
         width: '100%',
-        height: '100vh',
-        backgroundColor: '#e7e6e1'
+        backgroundColor: '#e7e6e1',
+        maxHeight: '850px'
     },
     layout: {
         display: 'flex'
@@ -42,16 +42,11 @@ const EventsComponent = () => {
     }, []);
 
     return (
-        <Container fixed>
-            <Grid container>
-                <Grid item xs={3}>
-                    <div></div>
-                </Grid>
-                <Grid item xs={9}>
-                    <EventComponent events={events}/>
-                </Grid>
-            </Grid>
-        </Container>
+
+
+        <EventComponent events={events}/>
+
+
     )
 };
 export default EventsComponent;

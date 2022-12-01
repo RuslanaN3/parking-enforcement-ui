@@ -7,7 +7,7 @@ import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import Box from "@mui/material/Box";
 import CustomHistory from "../CustomHistory";
-import EventsPage from "../components/EventsComponent";
+import EventsComponent from "../components/EventsComponent";
 import Typography from "@mui/material/Typography";
 import ParkingAreaPage from "../components/ParkingAreaPage";
 
@@ -15,7 +15,8 @@ const useStyles = makeStyles(theme => ({
     container: {
         width: '100%',
         height: '100vh',
-        backgroundColor: '#e7e6e1'
+        backgroundColor: '#e3e3e3',
+        overflow: 'hidden'
     },
     layout: {
         display: 'flex'
@@ -26,36 +27,6 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-//
-// const DashboardPage = () => {
-//     const classes = useStyles();
-//     const [events, setEvents] = React.useState(null);
-//
-//     const getEvents = () => {
-//         axios.get("/api/events").then((response) => {
-//             setEvents(response.data);
-//         });
-//     };
-//
-//     useEffect(() => {
-//         const timer = setInterval(() => getEvents(), 5000);
-//         return () => clearInterval(timer);
-//     }, []);
-//
-//     return (
-//         <div className={classes.container}>
-//             <Grid container>
-//                 <Grid item xs={3}>
-//                     <div></div>
-//                 </Grid>
-//                 <Grid item xs={9}>
-//                     <EventComponent events={events}/>
-//                 </Grid>
-//             </Grid>
-//         </div>
-//     )
-// };
-// export default DashboardPage;
 
 function TabPanel(props) {
     const {children, value, index, ...other} = props;
@@ -69,7 +40,7 @@ function TabPanel(props) {
             {...other}
         >
             {value === index && (
-                <Box sx={{p: 3}}>
+                <Box sx={{p: 4}}>
                     <Typography>{children}</Typography>
                 </Box>
             )}
@@ -79,7 +50,7 @@ function TabPanel(props) {
 
 export default function DashboardPage() {
     const classes = useStyles();
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -93,6 +64,7 @@ export default function DashboardPage() {
                           textColor="secondary"
                           indicatorColor="secondary"
                           aria-label="secondary tabs example"
+                          sx={{backgroundColor: "#ffffff"}}
                     >
                         <Tab label="Events"/>
                         <Tab label="Parked Vehicles"/>
@@ -100,7 +72,7 @@ export default function DashboardPage() {
                     </Tabs>
                 </Box>
                 <TabPanel value={value} index={0}>
-                    <EventsPage/>
+                    <EventsComponent/>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
                     Item Two

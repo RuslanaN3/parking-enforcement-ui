@@ -8,6 +8,8 @@ import Tabs from "@mui/material/Tabs/index";
 import Box from "@mui/material/Box/index";
 import {History as CustomHistory} from "history/index";
 import API from "../api/API";
+import Stack from "@mui/material/Stack";
+import Paper from "@mui/material/Paper";
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -42,14 +44,15 @@ const ParkingAreaComponent = () => {
 
     return (
         <div className={classes.container}>
-            <Grid container>
-                <Grid item xs={3}>
-                    <div></div>
-                </Grid>
-                <Grid item xs={9}>
-                    {parkingAreas && parkingAreas.map(parkingArea => <div>{parkingArea.areaType}</div>)}
-                </Grid>
-            </Grid>
+            <Stack spacing={2}>
+                {parkingAreas && parkingAreas.map(p =>
+                    <Paper sx={{padding: "10px"}}>
+                        <p>District: {p.address.district}</p>
+                        <p>{p.address.street}</p>
+
+                    </Paper>)
+                }
+            </Stack>
         </div>
     )
 };

@@ -6,7 +6,7 @@ import DashboardPage from "./pages/DashboardPage";
 
 function App() {
     return (
-        <div className="App">
+        <div>
             <Router>
                 <Routes>
                     <Route exact path="/" element={<DashboardPage />}/>
