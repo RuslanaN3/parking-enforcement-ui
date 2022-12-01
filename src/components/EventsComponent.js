@@ -7,7 +7,7 @@ import Tab from "@mui/material/Tab/index";
 import Tabs from "@mui/material/Tabs/index";
 import Box from "@mui/material/Box/index";
 import {History as CustomHistory} from "history/index";
-import API from "../api/API";
+import API, {eventsConst} from "../api/API";
 import Container from "@mui/material/Container";
 
 const useStyles = makeStyles(theme => ({
@@ -44,7 +44,7 @@ const EventsComponent = () => {
     return (
 
 
-        <EventComponent events={events}/>
+        <EventComponent events={eventsConst}/>
 
 
     )

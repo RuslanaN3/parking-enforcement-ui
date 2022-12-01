@@ -9,7 +9,7 @@ import Box from "@mui/material/Box";
 import CustomHistory from "../CustomHistory";
 import EventsComponent from "../components/EventsComponent";
 import Typography from "@mui/material/Typography";
-import ParkingAreaPage from "../components/ParkingAreaPage";
+import ParkingAreaPage from "../components/ParkingAreaComponent";
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -58,19 +58,19 @@ export default function DashboardPage() {
 
     return (
         <div className={classes.container}>
-            <Box sx={{width: '100%'}}>
-                <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
+            <Box sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: '100vh' }}>
                     <Tabs value={value} onChange={handleChange}
-                          textColor="secondary"
+                          textColor="white"
                           indicatorColor="secondary"
                           aria-label="secondary tabs example"
-                          sx={{backgroundColor: "#ffffff"}}
+                          sx={{backgroundColor: "#262663"}}
+                          orientation="vertical"
                     >
                         <Tab label="Events"/>
                         <Tab label="Parked Vehicles"/>
                         <Tab label="Parking Area"/>
                     </Tabs>
-                </Box>
+
                 <TabPanel value={value} index={0}>
                     <EventsComponent/>
                 </TabPanel>
@@ -85,6 +85,7 @@ export default function DashboardPage() {
 
     );
 }
+
 
 // icon add custom right corner
 // error handling with snackbar would be coooll

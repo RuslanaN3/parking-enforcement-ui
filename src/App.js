@@ -6,13 +6,13 @@ import DashboardPage from "./pages/DashboardPage";
 
 function App() {
     return (
-        <div>
+        <>
             <Router>
                 <Routes>
                     <Route exact path="/" element={<DashboardPage />}/>
                 </Routes>
             </Router>
-        </div>
+        </>
     );
 }
 

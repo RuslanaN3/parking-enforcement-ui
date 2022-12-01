@@ -14,8 +14,7 @@ import Paper from "@mui/material/Paper";
 const useStyles = makeStyles(theme => ({
     container: {
         width: '100%',
-        height: '100vh',
-        backgroundColor: '#e7e6e1'
+        height: '100vh'
     },
     layout: {
         display: 'flex'
@@ -26,19 +25,31 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+const ListElement = () => {
+
+    return (
+        <Grid container>
+
+
+        </Grid>
+
+    )
+}
+
+
 
 const ParkingAreaComponent = () => {
     const classes = useStyles();
     const [parkingAreas, setParkingAreas] = useState(null);
 
-    const getEvents = () => {
+    const getParkingAreas = () => {
         API.parkingAreas.getAll().then((response) => {
             setParkingAreas(response.data)
         })
     };
 
     useEffect(() => {
-        const timer = setInterval(() => getEvents(), 3000);
+        const timer = setInterval(() => getParkingAreas(), 3000);
         return () => clearInterval(timer);
     }, []);
 
