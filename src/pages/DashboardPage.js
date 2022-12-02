@@ -11,23 +11,23 @@ import EventsComponent from "../components/EventsComponent";
 import Typography from "@mui/material/Typography";
 import ParkingAreaPage from "../components/ParkingAreaComponent";
 import cars from "../assets/cars.jpg"
+import {styled} from '@mui/material/styles';
+import ParkedVehicleComponent from "../components/ParkedVehicleComponent";
 
 const useStyles = makeStyles(theme => ({
-    // container: {
-    //     width: '100%',
-    //     height: '100vh',
-    //     backgroundColor: '#e3e3e3',
-    //     overflow: 'hidden'
-    // },
-    layout: {
-        display: 'flex'
-    },
-    space: {
-        display: 'flex',
-        flex: 2
+    tab: {
+        alignSelf: 'flex-start',
+        color: '#ffffff'
     }
 }));
 
+const CustomTab = styled((props) => <Tab {...props} />)(({theme}) => ({
+    alignSelf: 'flex-start',
+    color: '#ffffff',
+    background: 'linear-gradient(180deg, #5959de 0%, #1f1f5c 100%),#262026',
+    alignItems: "start",
+    width: "100%"
+}));
 
 function TabPanel(props) {
     const {children, value, index, ...other} = props;
@@ -38,7 +38,8 @@ function TabPanel(props) {
             hidden={value !== index}
             id={`simple-tabpanel-${index}`}
             aria-labelledby={`simple-tab-${index}`}
-            style={{flex: 5, overflow: "hidden", padding: 48, paddingTop: 10,
+            style={{
+                flex: 5, overflow: "hidden", padding: 48, paddingTop: 10,
                 backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${cars})`,
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',
@@ -57,7 +58,7 @@ function TabPanel(props) {
 
 export default function DashboardPage() {
     const classes = useStyles();
-    const [value, setValue] = useState(2);
+    const [value, setValue] = useState(0);
 
 
     const handleChange = (event, newValue) => {
@@ -71,21 +72,19 @@ export default function DashboardPage() {
                       textColor="white"
                       indicatorColor="primary"
                       aria-label="secondary tabs example"
+                      variant="fullWidth"
                       sx={{backgroundColor: "#262663", width: 200, flex: 1}}
                       orientation="vertical"
                 >
-
-                    <Tab sx={{alignSelf: 'flex-start', color: '#ffffff'}} label="Events"/>
-                    <Tab sx={{alignSelf: 'flex-start', color: '#ffffff'}} label="Parked Vehicles"/>
-                    <Tab sx={{alignSelf: 'flex-start', color: '#ffffff'}} label="Parking Area"/>
+                    <CustomTab label="Events"/>
+                    <CustomTab label="Parked Vehicles"/>
+                    <CustomTab label="Parking Area"/>
                 </Tabs>
-
-
                 <TabPanel value={value} index={0}>
                     <EventsComponent/>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                    Item Two
+                    <ParkedVehicleComponent />
                 </TabPanel>
                 <TabPanel value={value} index={2}>
                     <ParkingAreaPage/>
@@ -95,7 +94,3 @@ export default function DashboardPage() {
 
     );
 }
-
-
-// icon add custom right corner
-// error handling with snackbar would be coooll
