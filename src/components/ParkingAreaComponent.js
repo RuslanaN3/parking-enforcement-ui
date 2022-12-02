@@ -10,6 +10,8 @@ import {History as CustomHistory} from "history/index";
 import API from "../api/API";
 import Stack from "@mui/material/Stack";
 import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import Chip from "@mui/material/Chip";
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -25,16 +27,52 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const ListElement = () => {
-
+const ParkingAreaListHeader = ({area}) => {
     return (
-        <Grid container>
+        <div elevation={1} sx={{backgroundColor: "#a8d4e7", padding: "10px"}}>
+            <Grid container>
+                <Grid item xs={3}>
+                    <Typography color="white">District/Street</Typography>
+                </Grid>
+                <Grid item xs={2}>
+                    <Typography color="white">Parking type</Typography>
+                </Grid>
+                <Grid item xs={2}>
+                    <Typography color="white">Parking side</Typography>
+                </Grid>
+                <Grid item xs={3} justifyContent="center">
+                    <Typography color="white">Parking places amount</Typography>
+                </Grid>
+                <Grid item xs={2}>
+                    <Typography color="white">Area type</Typography>
+                </Grid>
+            </Grid>
+        </div>)
+};
 
-
-        </Grid>
-
-    )
-}
+const ParkingAreaListItem = ({area}) => {
+    return (
+        <Paper elevation={1} sx={{backgroundColor: "#f3f3f3", padding: "10px", opacity: 0.85}}>
+            <Grid container>
+                <Grid item xs={3} direction="vertical">
+                    <Typography>{area.address.district}</Typography>
+                    <Typography>{area.address.street}</Typography>
+                </Grid>
+                <Grid item xs={2} justifyContent="center">
+                    <Typography color="#052c7d" >{area.parkingType}</Typography>
+                </Grid>
+                <Grid item xs={2}>
+                    <Typography>{area.parkingSide}</Typography>
+                </Grid>
+                <Grid item xs={3} justifyContent="center">
+                    <Typography>{area.parkingPlacesAmount}</Typography>
+                </Grid>
+                <Grid item xs={2} justifyContent="center">
+                    <Chip label={area.areaType} />
+                </Grid>
+            </Grid>
+        </Paper>)
+};
 
 
 
@@ -53,16 +91,12 @@ const ParkingAreaComponent = () => {
         return () => clearInterval(timer);
     }, []);
 
+
     return (
         <div className={classes.container}>
             <Stack spacing={2}>
-                {parkingAreas && parkingAreas.map(p =>
-                    <Paper sx={{padding: "10px"}}>
-                        <p>District: {p.address.district}</p>
-                        <p>{p.address.street}</p>
-
-                    </Paper>)
-                }
+                <ParkingAreaListHeader />
+                {parkingAreas && parkingAreas.map(area => <ParkingAreaListItem area={area}/>)}
             </Stack>
         </div>
     )

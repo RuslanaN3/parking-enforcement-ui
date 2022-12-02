@@ -10,6 +10,7 @@ import CustomHistory from "../CustomHistory";
 import EventsComponent from "../components/EventsComponent";
 import Typography from "@mui/material/Typography";
 import ParkingAreaPage from "../components/ParkingAreaComponent";
+import cars from "../assets/cars.jpg"
 
 const useStyles = makeStyles(theme => ({
     // container: {
@@ -37,7 +38,12 @@ function TabPanel(props) {
             hidden={value !== index}
             id={`simple-tabpanel-${index}`}
             aria-labelledby={`simple-tab-${index}`}
-            style={{flex: 5, overflow: "hidden", padding: 48}}
+            style={{flex: 5, overflow: "hidden", padding: 48, paddingTop: 10,
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${cars})`,
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat'
+            }}
             {...other}
         >
             {value === index && (
@@ -51,7 +57,8 @@ function TabPanel(props) {
 
 export default function DashboardPage() {
     const classes = useStyles();
-    const [value, setValue] = useState(0);
+    const [value, setValue] = useState(2);
+
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -72,6 +79,7 @@ export default function DashboardPage() {
                     <Tab sx={{alignSelf: 'flex-start', color: '#ffffff'}} label="Parked Vehicles"/>
                     <Tab sx={{alignSelf: 'flex-start', color: '#ffffff'}} label="Parking Area"/>
                 </Tabs>
+
 
                 <TabPanel value={value} index={0}>
                     <EventsComponent/>

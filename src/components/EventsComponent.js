@@ -4,6 +4,7 @@ import {makeStyles} from "@mui/styles/index";
 import API, {eventsConst} from "../api/API";
 import Container from "@mui/material/Container";
 import EventTable from "./EventTable";
+import Tabs from "@mui/material/Tabs";
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -37,7 +38,9 @@ const EventsComponent = () => {
     }, []);
 
     return (
+
         <EventTable events={eventsConst}/>
+
     )
 };
 export default EventsComponent;

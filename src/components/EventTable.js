@@ -9,8 +9,8 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 
 const useStyles = makeStyles(theme => ({
-    containerEvents: {
-
+    stickyHeader: {
+        backgroundColor: "blue"
 
     },
     table: {
@@ -26,33 +26,36 @@ const EventTable = ({events}) => {
 
     return (
 
-            <TableContainer sx={{backgroundColor: '#f3f3f3', maxHeight: '90vh'}} component={Paper}>
-                <Table sx={{minWidth: 650, maxWidth: '100%', overflowY: 'scroll', }} size="small" aria-label="a dense table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell align="right">Timestamp</TableCell>
-                            <TableCell align="right">License plate</TableCell>
-                            <TableCell align="right">Confidence</TableCell>
-                            <TableCell align="right">Camera Id</TableCell>
-                            <TableCell align="right">Cycle</TableCell>
+        <TableContainer sx={{backgroundColor: '#f3f3f3', maxHeight: '90vh', opacity: 0.85}} component={Paper}>
+            <Table stickyHeader
+
+                   sx={{minWidth: 650, maxWidth: '100%', overflowY: 'scroll' }} size="small"
+                   aria-label="customized table">
+                <TableHead>
+                    <TableRow>
+                        <TableCell align="right">Timestamp</TableCell>
+                        <TableCell align="right">License plate</TableCell>
+                        <TableCell align="right">Confidence</TableCell>
+                        <TableCell align="right">Camera Id</TableCell>
+                        <TableCell align="right">Cycle</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {events && events.map((row) => (
+                        <TableRow
+                            key={row.id}
+                            sx={{'&:last-child td, &:last-child th': {border: 0}}}
+                        >
+                            <TableCell align="right">{row.timestamp}</TableCell>
+                            <TableCell align="right">{row.licensePlate}</TableCell>
+                            <TableCell align="right">{row.licencePlateConfidence}</TableCell>
+                            <TableCell align="right">{row.cameraId}</TableCell>
+                            <TableCell align="right">{row.cycle}</TableCell>
                         </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {events && events.map((row) => (
-                            <TableRow
-                                key={row.id}
-                                sx={{'&:last-child td, &:last-child th': {border: 0}}}
-                            >
-                                <TableCell align="right">{row.timestamp}</TableCell>
-                                <TableCell align="right">{row.licensePlate}</TableCell>
-                                <TableCell align="right">{row.licencePlateConfidence}</TableCell>
-                                <TableCell align="right">{row.cameraId}</TableCell>
-                                <TableCell align="right">{row.cycle}</TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
+                    ))}
+                </TableBody>
+            </Table>
+        </TableContainer>
 
     );
 };
