@@ -9,7 +9,7 @@ import Box from "@mui/material/Box";
 import CustomHistory from "../CustomHistory";
 import EventsComponent from "../components/EventsComponent";
 import Typography from "@mui/material/Typography";
-import ParkingAreaPage from "../components/ParkingAreaComponent";
+import ParkingAreaComponent from "../components/ParkingAreaComponent";
 import cars from "../assets/cars.jpg"
 import {styled} from '@mui/material/styles';
 import ParkedVehicleComponent from "../components/ParkedVehicleComponent";
@@ -26,7 +26,10 @@ const CustomTab = styled((props) => <Tab {...props} />)(({theme}) => ({
     color: '#ffffff',
     background: 'linear-gradient(180deg, #5959de 0%, #1f1f5c 100%),#262026',
     alignItems: "start",
-    width: "100%"
+    width: "100%",
+    '&.Mui-selected': {
+        background: "linear-gradient(180deg, #a9a9dd 0%, #1f1f5c 100%),#262026"
+    }
 }));
 
 function TabPanel(props) {
@@ -58,7 +61,7 @@ function TabPanel(props) {
 
 export default function DashboardPage() {
     const classes = useStyles();
-    const [value, setValue] = useState(0);
+    const [value, setValue] = useState(2);
 
 
     const handleChange = (event, newValue) => {
@@ -68,7 +71,9 @@ export default function DashboardPage() {
     return (
         <div className={classes.container}>
             <Box sx={{flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: '100vh'}}>
-                <Tabs value={value} onChange={handleChange}
+                <Tabs value={value}
+                      TabIndicatorProps={{sx: {backgroundColor: "white"}}}
+                      onChange={handleChange}
                       textColor="white"
                       indicatorColor="primary"
                       aria-label="secondary tabs example"
@@ -84,10 +89,10 @@ export default function DashboardPage() {
                     <EventsComponent/>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                    <ParkedVehicleComponent />
+                    <ParkedVehicleComponent/>
                 </TabPanel>
                 <TabPanel value={value} index={2}>
-                    <ParkingAreaPage/>
+                    <ParkingAreaComponent/>
                 </TabPanel>
             </Box>
         </div>

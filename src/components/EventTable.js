@@ -47,8 +47,8 @@ const EventTable = ({events}) => {
                             sx={{'&:last-child td, &:last-child th': {border: 0}}}
                         >
                             <TableCell align="right">{row.timestamp}</TableCell>
-                            <TableCell align="right">{row.licensePlate}</TableCell>
-                            <TableCell align="right">{row.licencePlateConfidence}</TableCell>
+                            <TableCell align="right">{row.vehicleData.licensePlate}</TableCell>
+                            <TableCell align="right">{row.vehicleData.confidence}</TableCell>
                             <TableCell align="right">{row.cameraId}</TableCell>
                             <TableCell align="right">{row.cycle}</TableCell>
                         </TableRow>
